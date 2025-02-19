@@ -8,14 +8,15 @@ import { Component, OnInit } from '@angular/core';
   standalone: true,
   imports: [IonCard, IonItem, IonInput, IonButton]
 })
-export class Task1Component  implements OnInit {
-  result: any = 0;
+export class Task1Component {
+  result: any = "No result";
   calculate(a: any, b: any, c:any)
   {
     if(isNaN(a) || isNaN(b) || isNaN(c))
     {
       throw new Error("Wrong parameter");
     }
+    try{
     let sum = +a + +b + +c;
     let counter = 0;
     if(sum % 2 != 0)
@@ -28,14 +29,19 @@ export class Task1Component  implements OnInit {
         }
         
       }
-      this.result = "Result is " + {counter};
+      this.result = "Result is " + counter;
       return 0;
     }
-    this.result = "The sum is not even"
-    return 0;
+    
+    this.result = "The sum is not even";
+    return 0;}
+    catch(error) {
+      this.result = "Error"
+      console.log(error);
+      return 0;
+      
+    }
   }
   constructor() { }
-
-  ngOnInit() {}
 
 }
