@@ -1,0 +1,16 @@
+<ion-item>
+  <ion-card>
+    <ion-input label="Розмір матриці:" labelPlacement="stacked" type="number" id="N" value="0" #size>
+    </ion-input>
+  </ion-card>
+  <ion-button expand="block" (click) = "getMatrix(size.value)">Розрахувати</ion-button>
+</ion-item>
+<ion-item>
+  <ion-grid>
+    <ion-row *ngFor="let i of matrix" [ngStyle] = "{backgroundColor: getColor(i)}">
+      <ion-col *ngFor="let j of i">
+        {{ j }}
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-item>
