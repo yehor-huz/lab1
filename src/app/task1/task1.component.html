@@ -1,0 +1,16 @@
+<ion-card>
+  <ion-item>
+    <ion-input label="Перше число" labelPlacement="stacked", type="number", id="firstNumber", value="27", #inputFirstNumber>
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input label="Друге число" labelPlacement="stacked", type="number", id="secondNumber", value="27", #inputSecondNumber>
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input label="Третє число" labelPlacement="stacked", type="number", id="thirdNumber", value="27", #inputThirdNumber>
+    </ion-input>
+  </ion-item>
+  <ion-button expand="block" (click) = "calculate(inputFirstNumber.value, inputSecondNumber.value, inputThirdNumber.value)">Розрахувати</ion-button>
+  <ion-card>{{ result }}</ion-card>
+</ion-card>
