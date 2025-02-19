@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
   standalone: true,
   imports: [IonCard, IonItem, IonInput, IonButton]
 })
-export class Task1Component {
+export class Task1Component implements OnInit{
   result: any = "No result";
   calculate(a: any, b: any, c:any)
   {
@@ -43,5 +43,6 @@ export class Task1Component {
     }
   }
   constructor() { }
+  ngOnInit() {}
 
 }

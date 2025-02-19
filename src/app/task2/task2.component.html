@@ -1,0 +1,15 @@
+
+<ion-item>
+  <ion-card>
+    <ion-input label="Початок проміжку" labelPlacement="stacked" type="number" id="start" value="0" #start>
+    </ion-input>
+  </ion-card>
+  <ion-card>
+    <ion-input label="Кінець проміжку" labelPlacement="stacked" type="number" id="end" value="0" #end>
+    </ion-input>
+  </ion-card>
+  <ion-button expand="block" (click) = "getNumbers(start.value, end.value)">Розрахувати</ion-button>
+  <ion-card>{{ result }}</ion-card>
+
+
+</ion-item>
