@@ -1,4 +1,4 @@
-import { IonCard, IonItem, IonInput, IonButton } from '@ionic/angular/standalone';
+import { IonCard, IonItem, IonInput, IonButton, IonList } from '@ionic/angular/standalone';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './task1.component.html',
   styleUrls: ['./task1.component.scss'],
   standalone: true,
-  imports: [IonCard, IonItem, IonInput, IonButton]
+  imports: [IonList, IonCard, IonItem, IonInput, IonButton]
 })
 export class Task1Component implements OnInit{
   result: any = "No result";

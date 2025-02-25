@@ -1,13 +1,13 @@
 import { NgFor, NgStyle } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { IonCard, IonInput, IonButton, IonItem, IonGrid, IonRow, IonCol } from "@ionic/angular/standalone";
+import { IonCard, IonInput, IonButton, IonItem, IonGrid, IonRow, IonCol, IonList } from "@ionic/angular/standalone";
 
 @Component({
   selector: 'app-task3',
   templateUrl: './task3.component.html',
   styleUrls: ['./task3.component.scss'],
   standalone: true,
-  imports: [IonCard, IonInput, IonButton, IonItem, IonGrid, IonRow, IonCol, NgFor, NgStyle]
+  imports: [IonList, IonCard, IonInput, IonButton, IonItem, IonGrid, IonRow, IonCol, NgFor, NgStyle]
 })
 export class Task3Component  implements OnInit {
 

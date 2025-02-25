@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { IonCard, IonInput, IonButton, IonItem } from "@ionic/angular/standalone";
+import { IonCard, IonInput, IonButton, IonItem, IonList } from "@ionic/angular/standalone";
 
 @Component({
   selector: 'app-task2',
   templateUrl: './task2.component.html',
   styleUrls: ['./task2.component.scss'],
   standalone: true,
-  imports: [IonCard, IonInput, IonButton, IonItem]
+  imports: [IonList, IonCard, IonInput, IonButton, IonItem]
 })
 export class Task2Component  implements OnInit {
   result: any = "No result";
