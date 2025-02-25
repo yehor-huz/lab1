@@ -6,6 +6,6 @@ export class FacultyList {
         this.faculties.push(newFaculty);
     }
     groupByUniversity() {
-        this.faculties = this.faculties.sort((f1, f2) => f1.universityName.localeCompare(f2.universityName));
+        this.faculties = this.faculties.sort((f1, f2) => f1.universityName.localeCompare(f2.universityName))
     }
 }

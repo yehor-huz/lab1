@@ -1,0 +1,25 @@
+<ion-content>
+  <ion-list>
+      <ion-card id="facultyCard" *ngFor="let faculty of facultyList.faculties">
+        <ion-card [ngStyle]="{'background-color': universityColors[faculty.universityName]}">
+          <ion-card-header>
+            <ion-card-title>{{ faculty.facultyName }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-card>Університет: {{ faculty.universityName }}</ion-card>
+            <ion-card>Декан: {{ faculty.dean }}</ion-card>
+            <ion-card>Телефон: {{ faculty.phone }}</ion-card>
+            <ion-card>Адреса: {{ faculty.address }}</ion-card>
+          </ion-card-content>
+        </ion-card>
+      </ion-card>
+</ion-list>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Факультетів на університет</ion-card-title>
+    </ion-card-header>
+    <ion-card-content id="chartCanvas">
+      <canvas id="facultyChart"></canvas>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

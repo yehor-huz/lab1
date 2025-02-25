@@ -1,0 +1,21 @@
+canvas {
+    max-height: 75vh;
+    max-width: 75vw;
+}
+
+ion-list {
+    display: flex;
+
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#facultyCard {
+    flex-grow: 1;
+}
+
+#chartCanvas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
