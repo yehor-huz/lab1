@@ -1,0 +1,11 @@
+ion-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#transportCard {
+    flex: 1 1 calc(33.333% - 10px); /* 3 колонки на великому екрані */
+    margin: 5px;
+    box-sizing: border-box;
+}

@@ -1,0 +1,33 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Завдання</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-item>
+      Знайти транспортні засоби, дальність поїздки яких більше за введене число.
+    </ion-item>
+    <ion-item>
+      <ion-input label="Введіть відстань" labelPlacement="floating" type="number" min="1" [(ngModel)]="distance"> </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-button expand="full" (click)="filterTransport()">Фільтрувати</ion-button>
+    </ion-item>
+  </ion-card-content>
+  <ion-card-header>
+    <ion-card-title>Результат</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-list>
+      <ion-card #transportCard *ngFor="let trans of filteredTransport" [ngStyle]="{'background-color': getColor(trans.getType())}">
+        <ion-card-header>
+          <ion-card-title>{{ trans.getName() }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-item>Тип: {{ trans.getType() }}</ion-item>
+          <ion-item>Швидкість: {{ trans.getMaxSpeed() }}</ion-item>
+          <ion-item>Запас ходу: {{ trans.getRange() }}</ion-item>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+  </ion-card-content>
+</ion-card>
