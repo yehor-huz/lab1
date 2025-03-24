@@ -1,19 +1,21 @@
 import { Component } from '@angular/core';
-import { IonCard, IonContent, IonList, IonCardHeader, IonCardTitle, IonCardContent, IonInput, IonButton } from "@ionic/angular/standalone";
+import { IonCard, IonContent, IonList, IonCardHeader, IonCardTitle, IonCardContent, IonInput, IonButton, IonRow, IonCol, IonGrid } from "@ionic/angular/standalone";
 import { Chart } from 'chart.js';
 import { TabulatingService } from '../tabulating.service';
 import { RecursionService } from '../recursion.service';
 import { SeriesService } from '../series.service';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-service-input',
   templateUrl: './service-input.component.html',
   styleUrls: ['./service-input.component.scss'],
   standalone: true,
-  imports: [IonButton, IonInput, IonCard, IonContent, IonCardHeader, IonCardTitle, IonCardContent]
+  imports: [IonGrid, IonCol, IonRow, IonButton, IonInput, IonCard, IonContent, IonCardHeader, IonCardTitle, IonCardContent,  NgFor, NgIf]
 })
 export class ServiceInputComponent {
   plotChart: any;
+  tableData: any[] = [];
 
   constructor(
     private tabService: TabulatingService,
@@ -39,6 +41,13 @@ export class ServiceInputComponent {
     let builtInY = builtInResult.y.map(Number);
     let recursionY = recursionResult.y.map(Number);
     let taylorY = taylorResult.y.map(Number);
+
+    this.tableData = xValues.map((xValue, index) => ({
+      x: xValue.toFixed(2),
+      builtInY: builtInY[index].toFixed(4),
+      recursionY: recursionY[index].toFixed(4),
+      taylorY: taylorY[index].toFixed(4),
+    }));
     
     this.drawGraph(xValues, builtInY, recursionY, taylorY);
   }

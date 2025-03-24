@@ -20,5 +20,19 @@
       </ion-card-content>
     </ion-card>
   </div>
+  <ion-grid *ngIf="this.tableData.length != 0">
+    <ion-row>
+      <ion-col> x </ion-col>
+      <ion-col> Програмне </ion-col>
+      <ion-col> Рекурсивне </ion-col>
+      <ion-col> Ряд Тейлора </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let row of this.tableData">
+      <ion-col>{{ row.x }}</ion-col>
+      <ion-col>{{ row.builtInY }}</ion-col>
+      <ion-col>{{ row.recursionY }}</ion-col>
+      <ion-col>{{ row.taylorY }}</ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
 
