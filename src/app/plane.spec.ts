@@ -27,4 +27,19 @@ describe("Plane", () => {
         plane.fly();
         expect(console.log).toHaveBeenCalledWith("I FLY");
     });
+    it("should throw an error if maxSpeed is not positive", () => {
+        expect(() => new Plane("Jet", "Boeing", 0, 5000, "SN123")).toThrow(new Error("Speed must be positive"));
+      });
+    
+    it("should throw an error if range is not positive", () => {
+        expect(() => new Plane("Jet", "Boeing", 900, 0, "SN123")).toThrow(new Error("Range must be positive"));
+      });
+    
+    it("should throw an error if name is empty", () => {
+        expect(() => new Plane("Jet", "", 900, 5000, "SN123")).toThrow(new Error("Transport must have a name"));
+      });
+
+    it("should throw an error if serialNumber is empty", () => {
+        expect(() => new Plane("Jet", "Boeing", 900, 5000, "")).toThrow(new Error("Plane must have a serial number"));
+      });
 });
