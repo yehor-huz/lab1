@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { IonCard, IonContent, IonList, IonCardHeader, IonCardTitle, IonCardContent, IonInput, IonButton, IonRow, IonCol, IonGrid } from "@ionic/angular/standalone";
 import { Chart } from 'chart.js';
-import { TabulatingService } from '../tabulating.service';
-import { RecursionService } from '../recursion.service';
-import { SeriesService } from '../series.service';
+import { TabulatingService } from '../services-fold/tabulating.service';
+import { RecursionService } from '../services-fold/recursion.service';
+import { SeriesService } from '../services-fold/series.service';
 import { NgFor, NgIf } from '@angular/common';
 
 @Component({
@@ -24,32 +24,42 @@ export class ServiceInputComponent {
   ) {}
 
   calculateFunction(start: any, stop: any, step: any) {
-    let x = parseFloat(start);
-    let xStop = parseFloat(stop);
-    let h = parseFloat(step);
+    try {
+      let x = parseFloat(start);
+      let xStop = parseFloat(stop);
+      let h = parseFloat(step);
+      if (isNaN(x) || isNaN(xStop) || isNaN(h) || h <= 0) {
+        throw new Error("Дані не є числами");
+      }
+      if (x < -1 || xStop > 1 || h > 1 || h < -1)
+      {
+        throw new Error("Дані виходять за межі діапазону");
+      }
 
-    if (isNaN(x) || isNaN(xStop) || isNaN(h) || h <= 0) {
-      console.error("Некоректні вхідні дані");
-      return;
+      let builtInResult = this.tabService.getTab(x, xStop, h);
+      let recursionResult = this.recursionService.getTab(x, xStop, h);
+      let taylorResult = this.seriesService.getTab(x, xStop, h);
+  
+      let xValues = builtInResult.x.map(Number);
+      let builtInY = builtInResult.y.map(Number);
+      let recursionY = recursionResult.y.map(Number);
+      let taylorY = taylorResult.y.map(Number);
+  
+      this.tableData = xValues.map((xValue, index) => ({
+        x: xValue.toFixed(2),
+        builtInY: builtInY[index].toFixed(4),
+        recursionY: recursionY[index].toFixed(4),
+        taylorY: taylorY[index].toFixed(4),
+      }));
+      
+      this.drawGraph(xValues, builtInY, recursionY, taylorY);
+    } catch (error) {
+      console.log(error)
     }
 
-    let builtInResult = this.tabService.getTab(x, xStop, h);
-    let recursionResult = this.recursionService.getTab(x, xStop, h);
-    let taylorResult = this.seriesService.getTab(x, xStop, h);
 
-    let xValues = builtInResult.x.map(Number);
-    let builtInY = builtInResult.y.map(Number);
-    let recursionY = recursionResult.y.map(Number);
-    let taylorY = taylorResult.y.map(Number);
 
-    this.tableData = xValues.map((xValue, index) => ({
-      x: xValue.toFixed(2),
-      builtInY: builtInY[index].toFixed(4),
-      recursionY: recursionY[index].toFixed(4),
-      taylorY: taylorY[index].toFixed(4),
-    }));
-    
-    this.drawGraph(xValues, builtInY, recursionY, taylorY);
+
   }
 
   drawGraph(xValues: number[], builtInY: number[], recursionY: number[], taylorY: number[]) {
