@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonCard, IonContent, IonList, IonCardHeader, IonCardTitle, IonCardContent, IonInput, IonButton, IonRow, IonCol, IonGrid } from "@ionic/angular/standalone";
+import { IonCard, IonContent, IonList, IonCardHeader, IonCardTitle, IonCardContent, IonInput, IonButton, IonRow, IonCol, IonGrid, IonImg } from "@ionic/angular/standalone";
 import { Chart } from 'chart.js';
 import { TabulatingService } from '../services-fold/tabulating.service';
 import { RecursionService } from '../services-fold/recursion.service';
@@ -11,7 +11,7 @@ import { NgFor, NgIf } from '@angular/common';
   templateUrl: './service-input.component.html',
   styleUrls: ['./service-input.component.scss'],
   standalone: true,
-  imports: [IonGrid, IonCol, IonRow, IonButton, IonInput, IonCard, IonContent, IonCardHeader, IonCardTitle, IonCardContent,  NgFor, NgIf]
+  imports: [IonImg, IonGrid, IonCol, IonRow, IonButton, IonInput, IonCard, IonContent, IonCardHeader, IonCardTitle, IonCardContent,  NgFor, NgIf]
 })
 export class ServiceInputComponent {
   plotChart: any;
